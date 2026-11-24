@@ -20,12 +20,16 @@ WORD = "Teflon"
 OUTPUT_PATH = os.environ.get("ENTRY_OUTPUT", "/output/entry.txt")
 
 
-def main() -> None:
-    directory = os.path.dirname(OUTPUT_PATH)
+def write_word(path: str, word: str) -> None:
+    directory = os.path.dirname(path)
     if directory:
         os.makedirs(directory, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
-        f.write(WORD)
+    with open(path, "w", encoding="utf-8", newline="") as f:
+        f.write(word)
+
+
+def main() -> None:
+    write_word(OUTPUT_PATH, WORD)
 
 
 if __name__ == "__main__":
